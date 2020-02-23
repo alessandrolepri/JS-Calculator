@@ -4,7 +4,11 @@
   "description": "JS-Calculator and PHP database",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "watch 'npm run build' src",
+    "serve": "webpack-dev-server --mode=development",
+    "build": "webpack -p",
+    "start": "node index"
   },
   "repository": {
     "type": "git",
