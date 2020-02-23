@@ -1,3 +1,6 @@
+
+@import './_base.sass'
+
 *
   box-sizing: border-box
 
@@ -9,21 +12,39 @@
 
 .calculatorbox
   width: 300px
-  border: gray
+  border: $border-grey
 
 .calwindow
-  background: gray
+  background: $color-result
   display: flex
   flex-direction: column
   align-items: flex-end
   padding: 40px 30px
 
 .entry
-  font-size: 55px
+  font-size: $font-size-result
+
+.entryhistory
+  font-size: 22px
+  letter-spacing: 2px
+  padding-right: 5px
+
+.entry p, .entryhistory p
+  margin: 0
+  color: $color-text-pad
+  word-break: break-word
+  overflow-wrap: break-word
+  letter-spacing: 7px
+  font-family: $font-family-pad
+
+#history
+  color: $color-history-text
+  font-size: $font-size-pad
+  font-weight: $font-weight-light
 
 #clear,
 #save
-  font-family: sans-serif
+  font-family: $font-family-red-button
 
 .row
   clear: both
@@ -38,26 +59,29 @@ button
 .key
   width: 100%
   height: 70px
-  font-size: 26px
-  border-top: 1px solid gray
-  background-color: coral
-  color: #fff
-  font-weight: 200
-  font-family: sans-serif
+  font-size: $font-size-pad
+  border-top: $border-top
+  background-color: $background-color-num-pad
+  color: $color-text-pad
+  font-weight: $font-weight-light
+  font-family: $font-family-pad
 
 .key.topcolor
-  background-color: red
-  color: #fff
+  background-color: $background-color-ac-save
+  color: $color-text-pad
   padding: 0px 41px 0 5px
   width: 13.3rem
   padding-left: 20px
 
 .key.operators
-  background-color: yellow
-  color: #fff
-  font-size: 35px
-  font-family: sans-serif
+  background-color: $background-color-operator
+  color: $color-num
+  font-size: $font-size-operator
+  font-family: $font-family-pad
 
 .key[value="0"]
   text-align: left
   padding: 0px 70px 0 31px
+
+#history:after
+  content: "="
