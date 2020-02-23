@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let finalset = ''
   let equalPressed = false
 
-  document.querySelectorAll('button').forEach((button) => button.addEventListener('click', ({target}) => calculate(target.getAttribute('value'))))
+  document.querySelectorAll('button').forEach((button) => button.addEventListener('click', ({ target }) => calculate(target.getAttribute('value'))))
 
   function calculate(keyitem) {
     historyarray.push(keyitem)
@@ -38,11 +38,14 @@ document.addEventListener('DOMContentLoaded', function() {
         addDecimal(keyitem)
         break
       case '=':
+        solveEqual()
         break
     }
     // console.log(historyarray)
+    update()
   }
 
+  // add numbers to historyarray for each click =+
   function addNumber(keyitem) {
     if (mainMath === '0'){
       mainMath = keyitem
@@ -52,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     mainMath+=keyitem
     finalset = mainMath
     // console.log(finalset)
-    console.log(mainMath)
+    // console.log(mainMath)
   }
 
   // getting every values into historyarray
@@ -75,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
       history += mainMath
     }
     mainMath = '0'
-    console.log(historyarray)
+    // console.log(historyarray)
   }
 
 
@@ -100,8 +103,29 @@ document.addEventListener('DOMContentLoaded', function() {
     mainMath+=keyitem
   }
 
+  const solveEqual = () => {
+    history += finalset
+    mainMath =
+  eval(history)
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
+
   // console.log(historyarray)
 
+  // priniting digits to the screen and getting history and result
+  const update = () => {
+    document.getElementById('answer').innerHTML =
+    mainMath
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      .substring(0, 4)
+
+    document.getElementById('history').innerHTML =
+    history
+      .toString().replace(/\*/g, 'x')
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
 
 
 
