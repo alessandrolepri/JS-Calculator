@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let history = '0'
   let finalset = ''
   let equalPressed = false
+  let sum = []
 
   document.querySelectorAll('button').forEach((button) => button.addEventListener('click', ({ target }) => calculate(target.getAttribute('value'))))
 
@@ -119,15 +120,71 @@ document.addEventListener('DOMContentLoaded', function() {
     mainMath
       .toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-      .substring(0, 4)
 
     document.getElementById('history').innerHTML =
     history
-      .toString().replace(/\*/g, 'x')
+      .toString().
+      replace(/\*/g, 'x')
       .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
 
 
+  // 'SAVE' event will retunrn local IP, Browser and Time => onclick
+  const giveSum = (ev) => {
+    ev.preventDefault()
 
+    const ip = require('ip')
+    const ipAdr = ip.address()
+    const today = new Date()
+    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
+    const time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds()
+    const dateTime = date+' '+time
+    const summary = document.getElementById('answer').innerHTML =
+    mainMath
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
+
+
+    // get object with all transaction as JSON when click on 'SAVE'
+    const tracks = {
+      Summary: summary,
+      Time: dateTime,
+      Browser: navigator.appVersion, // give local IP
+      IpAddress: ipAdr
+    }
+
+    // Every click "SAVE" it will create a single CSV file, just one action
+
+    // let tracks = [
+    //   ['', '' ],
+    //   ['Summary', summary],
+    //   ['Time', new Date()],
+    //   ['Browser', navigator.appVersion],
+    //   ['Ip Address', ipAdr]
+    // ]
+
+    // const csvContent = 'data:text/csv; charset=utf-8'
+    //       + tracks.map(e => e.join(',')).join('\n')
+    //
+    // var encodedUri = encodeURI(csvContent)
+    // var link = document.createElement('a')
+    // link.setAttribute('href', encodedUri)
+    // link.setAttribute('download', 'tracks.csv')
+    // document.body.appendChild(link)
+    // link.click()
+
+    // end of CSV on 'SAVE'
+
+    sum.push(tracks)
+    //
+    console.log(JSON.stringify(sum, 0, 4))
+
+    // including a localStorage for data track
+
+    localStorage.setItem('MyCalculation', JSON.stringify(sum, 0, 3))
+
+  }
+  document.getElementById('save').addEventListener('click', giveSum)
 
 }) //DOMContentLoaded ends
