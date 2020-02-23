@@ -36,10 +36,9 @@
 
 ## Structure
 
-All files are inside /src, /src/sass, /server folder
-assets/mockup contains only the png to be reproduced
+* All files are inside /src, /src/sass, /server folder
 
-'/.assets' contains the mock-up calculator to replicate
+* '/.assets' contains the mock-up calculator to replicate
 
 I did use https://imagecolorpicker.com/ to detect the right colour, https://fonts.google.com/ library to find the right font-family and https://www.photopea.com/ to compare dimensions
 
