@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let history = '0'
   let finalset = ''
   let equalPressed = false
-  let sum = []
+  const sum = []
 
   document.querySelectorAll('button').forEach((button) => button.addEventListener('click', ({ target }) => calculate(target.getAttribute('value'))))
 
@@ -118,13 +118,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const update = () => {
     document.getElementById('answer').innerHTML =
     mainMath
-      .toString()
+      // .toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 
     document.getElementById('history').innerHTML =
     history
-      .toString().
-      replace(/\*/g, 'x')
+      // .toString()
+      .replace(/\*/g, 'x')
       .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
 
@@ -143,7 +143,6 @@ document.addEventListener('DOMContentLoaded', function() {
     mainMath
       .toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-
 
 
     // get object with all transaction as JSON when click on 'SAVE'
