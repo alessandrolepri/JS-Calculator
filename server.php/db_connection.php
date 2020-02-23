@@ -32,18 +32,4 @@
     return date("D M j G:i:s T Y");
   }
 
-  function generateCsv($data, $delimiter = ',', $enclosure = '"') {
-    if(!file_exists('save-calculation')){
-      mkdir('save-calculation', 0777, true);
-    }
-
-    // $fp = fopen('save-calculation/file.csv', 'a+');
-
-    foreach ($data as $fields) {
-      fputcsv($fp, $fields);
-    }
-    fclose($fp);
-
-  }
-
 ?>
