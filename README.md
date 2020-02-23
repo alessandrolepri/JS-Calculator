@@ -30,11 +30,19 @@
 * ```npm i``` to install all dependencies
 * ```npm start``` to run the server and show the Calculator at ```http://localhost:4000/```
 * ```sudo apachectl start``` to initialised PHP database and open connection to MySQL Server (you might need enter your local password)
+* You should probably move PHP folder to the right location set-up on your laptop
+* You will need to access to phpMyAdmin to get the database (use same password than MySQL)
 
 
-## Folder Structure and process
+## Structure
 
 All files are inside /src, /src/sass, /server folder
+assets/mockup contains only the png to be reproduced
 
-assets folder contains the mock-up calculator to replicate as close as possible.
-I did use https://imagecolorpicker.com/ to detect the right colour, https://fonts.google.com/ library to find the right font-family and https://www.photopea.com/ to get the right dimension 
+'/.assets' contains the mock-up calculator to replicate
+
+I did use https://imagecolorpicker.com/ to detect the right colour, https://fonts.google.com/ library to find the right font-family and https://www.photopea.com/ to compare dimensions
+
+Inside the 'base.sass' there are all the variables stored to be used into style.sass which is then imported to app.js to run build and create the bundle.js
+
+There is an extra feature on the front end side to create a JSON file of all the math operations needed when click on 'SAVE' and then converted to an CSV file as a table and create an extra copy into the localStorage.
